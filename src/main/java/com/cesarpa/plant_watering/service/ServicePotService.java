@@ -17,7 +17,8 @@ public class ServicePotService {
         return potRepository.findAll();
     }
 
-    public Pot save(Pot pot) {
+    public Pot save(Long id, Pot pot) {
+        pot.setId(id);
         return potRepository.save(pot);
     }
 
