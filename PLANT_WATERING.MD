@@ -100,6 +100,7 @@ Represents an individual botanical specimen.
 - **Framework**: Spring Boot 3.x.
 - **Lombok**: Required. Use `@Data`, `@Builder`, `@NoArgsConstructor`, and `@AllArgsConstructor` to reduce boilerplate.
 - **Persistence**: Use **Jakarta Persistence (JPA)** instead of the old `javax.persistence` (Spring Boot 3+ standard).
+- **Repositories**: Use Spring Data JPA repositories for data access.
 - **Validation**: Use `jakarta.validation.constraints` for fields like `name` (@NotBlank) and `wateringFrequency` (@Min(1)).
 - **Mapping**: Use standard JPA annotations for relationships (`@OneToMany`, `@ManyToOne`, `@JoinColumn`).
 - **Structure**: Follow a layered architecture with clear separation of concerns (Entities, Repositories, Services, Controllers).
@@ -116,5 +117,3 @@ Represents an individual botanical specimen.
 - [x] Set up ORM models and relationships.
 - [ ] Implement business logic for watering alerts.
 - [ ] Design RESTful API endpoints.
-
-## Repositories will use JpaRepository
