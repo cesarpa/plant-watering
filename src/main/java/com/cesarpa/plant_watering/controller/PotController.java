@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/pot")
+@RequestMapping("/pots")
 public class PotController {
 
     @Autowired
@@ -18,17 +18,36 @@ public class PotController {
 
     @GetMapping
     public String listPots(Model model) {
-        model.addAttribute("pots", servicePotService.getAll());
-        return "pots-list";
+        List<Pot> pots = servicePotService.getAll();
+        model.addAttribute("pots", pots);
+        return "pot-list";
     }
 
     @PostMapping
-    public Pot save(@RequestBody Pot pot) {
-        return servicePotService.save(pot.getId(), pot);
+    public String save(@ModelAttribute Pot pot, Model model) {
+        Pot savedPot = servicePotService.save(pot.getId(), pot);
+        model.addAttribute("message", "Pot created successfully");
+        return "redirect:/pots";
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        Pot pot = servicePotService.getById(id);
+        model.addAttribute("pot", pot);
+        return "pot-form";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Pot pot, Model model) {
+        Pot updatedPot = servicePotService.save(pot.getId(), pot);
+        model.addAttribute("message", "Pot updated successfully");
+        return "redirect:/pots";
+    }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable Long id, Model model) {
         servicePotService.delete(id);
+        model.addAttribute("message", "Pot deleted successfully");
+        return "redirect:/pots";
     }
 }

@@ -22,6 +22,10 @@ public class ServicePotService {
         return potRepository.save(pot);
     }
 
+    public Pot getById(Long id) {
+        return potRepository.findById(id).orElse(null);
+    }
+
     public void delete(Long id) {
         potRepository.deleteById(id);
     }
