@@ -17,15 +17,14 @@ public class PotController {
     private ServicePotService servicePotService;
 
     @GetMapping
-    public List<Pot> listPots(Model model) {
-        return servicePotService.getAll();
-
+    public String listPots(Model model) {
+        model.addAttribute("pots", servicePotService.getAll());
+        return "pots-list";
     }
 
     @PostMapping
     public Pot save(@RequestBody Pot pot) {
-        servicePotService.save(pot.getId(), pot);
-        return ""
+        return servicePotService.save(pot.getId(), pot);
     }
 
     @DeleteMapping("/{id}")
