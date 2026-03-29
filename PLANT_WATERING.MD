@@ -31,6 +31,7 @@ Represents the container in which a plant is grown.
 
 ### 5. Entity: Plant
 Represents an individual botanical specimen.
+- **id**: Unique identifier.
 - **name**: String (Common or scientific name).
 - **energy_id**: FK (Reference to EnergySource).
 - **fertilizer_id**: FK (Reference to FertilizerType).
@@ -118,4 +119,4 @@ Represents an individual botanical specimen.
 - [x] Define Database Schema.
 - [x] Set up ORM models and relationships.
 - [ ] Implement business logic for watering alerts.
-- [ ] Design RESTful API endpoints.
+- [ ] Design RESTful API endpoints.```
