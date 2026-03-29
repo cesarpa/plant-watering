@@ -29,4 +29,8 @@ public class ServicePotService {
     public void delete(Long id) {
         potRepository.deleteById(id);
     }
+
+    public Pot update(Pot pot) {
+        return potRepository.save(pot);
+    }
 }
