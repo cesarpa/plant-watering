@@ -1,4 +1,4 @@
-package com.cesarpa.plant_watering.controller;
+package com.cesarpa.plant_watering.service;
 
 import com.cesarpa.plant_watering.model.EnergySource;
 import com.cesarpa.plant_watering.repository.EnergySourceRepository;

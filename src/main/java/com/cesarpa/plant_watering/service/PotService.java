@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ServicePotService {
+public class PotService {
 
     @Autowired
     private PotRepository potRepository;
