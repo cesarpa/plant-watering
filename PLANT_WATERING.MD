@@ -101,6 +101,8 @@ Represents an individual botanical specimen.
 - **Lombok**: Required. Use `@Data`, `@Builder`, `@NoArgsConstructor`, and `@AllArgsConstructor` to reduce boilerplate.
 - **Persistence**: Use **Jakarta Persistence (JPA)** instead of the old `javax.persistence` (Spring Boot 3+ standard).
 - **Repositories**: Use Spring Data JPA repositories for data access.
+- **Service Layer**: Implement a service layer to handle business logic and interactions between controllers and repositories.
+  - create 3 methods in the service layer for each entity: `getAll`, `getById`, `createOrUpdate`, and `delete`.
 - **Validation**: Use `jakarta.validation.constraints` for fields like `name` (@NotBlank) and `wateringFrequency` (@Min(1)).
 - **Mapping**: Use standard JPA annotations for relationships (`@OneToMany`, `@ManyToOne`, `@JoinColumn`).
 - **Structure**: Follow a layered architecture with clear separation of concerns (Entities, Repositories, Services, Controllers).
