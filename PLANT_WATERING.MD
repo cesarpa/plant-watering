@@ -116,3 +116,5 @@ Represents an individual botanical specimen.
 - [x] Set up ORM models and relationships.
 - [ ] Implement business logic for watering alerts.
 - [ ] Design RESTful API endpoints.
+
+## Repositories will use JpaRepository
