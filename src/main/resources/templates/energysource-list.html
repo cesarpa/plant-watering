@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Energy Source List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Energy Source List</h1>
+        <a href="/energy-sources/new" class="btn btn-primary mb-3">Add New Energy Source</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="energySource : ${energySources}">
+                    <td th:text="${energySource.id}"></td>
+                    <td th:text="${energySource.name}"></td>
+                    <td th:text="${energySource.description}"></td>
+                    <td>
+                        <a href="/energy-sources/{id}/edit" th:href="@{/energy-sources/{id}(id=${energySource.id})}" class="btn btn-warning">Edit</a>
+                        <form action="/energy-sources/{id}/delete" th:action="@{/energy-sources/{id}(id=${energySource.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${message}">
+            <div class="alert alert-success mt-3" role="alert">
+                <span th:text="${message}"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
