@@ -108,15 +108,37 @@ Represents an individual botanical specimen.
 - **Mapping**: Use standard JPA annotations for relationships (`@OneToMany`, `@ManyToOne`, `@JoinColumn`).
 - **Structure**: Follow a layered architecture with clear separation of concerns (Entities, Repositories, Services, Controllers).
 
-## Thymeleaf Views (Optional)
-- **Garden List View**: Display all gardens and their associated plants.
-- **Plant Detail View**: Show detailed information about a specific plant, including care requirements and history(last_prune_date).
-- **Energy Source and Fertilizer Management Views**: Allow users to manage energy sources and fertilizer types.
-- **Pot Management View**: Enable users to manage pot types and their attributes.
-- **Watering Schedule View**: Display upcoming watering needs based on `wateringFrequency` and `lastPruneDate`.
+## Controllers & Web Routing (Thymeleaf)
+- **Controller Type**: Use `@Controller` (not `@RestController`) for all web controllers.
+- **Return Types**: Methods must return a `String` representing the Thymeleaf template path.
+- **Model Mapping**: Use `org.springframework.ui.Model` to pass data to the views.
+- **Naming Convention**:
+  - Controllers should be named `[Entity]WebController.java`.
+  - Templates should be located in `src/main/resources/templates/` and named `[entity]-list.html`, `[entity]-form.html`, etc.
 
-## Future Implementation Tasks
-- [x] Define Database Schema.
-- [x] Set up ORM models and relationships.
-- [ ] Implement business logic for watering alerts.
-- [ ] Design RESTful API endpoints.```
+### Specific Routes & View Mapping:
+| Controller | Route | Template Name | Action |
+| :--- | :--- | :--- | :--- |
+| **GardenController** | `/gardens` | `garden-list.html` | List all gardens and their plants |
+| **PlantController** | `/plants/{id}` | `plant-detail.html` | View specific plant details |
+| **PotController** | `/pots` | `pot-list.html` | CRUD Management for Pots |
+| **EnergyController** | `/energy-sources` | `energysource-list.html` | CRUD Management for Energy |
+| **FertilizerController**| `/fertilizers` | `fertilizer-list.html` | CRUD Management for Fertilizers |
+| **ScheduleController** | `/schedule` | `watering-schedule.html` | View upcoming tasks |
+
+## Thymeleaf View Specifications
+- **Layout**: All views should share a common fragments (header/footer) if possible.
+- **Forms**: Use `th:object` and `th:field` for data binding in `-form.html` views.
+- **Feedback**: Implement simple alert messages using `redirectAttributes` (e.g., "Pot created successfully").
+
+
+Markdown
+## Implementation Progress & Roadmap
+- [x] Define Database Schema (H2 In-Memory).
+- [x] Set up ORM models and relationships (JPA & Lombok).
+- [ ] Implement Service Layer (CRUD logic for all entities).
+- [ ] Create Web Controllers and Thymeleaf Route Mapping.
+- [ ] Design Frontend Templates (Bootstrap 5 + Thymeleaf).
+- [ ] Implement Business Logic: Watering Alerts (calculate next watering date).
+- [ ] **Advanced**: Implement a Task Scheduler to notify about overdue pruning/watering.
+- [ ] **Bonus**: Add Search/Filter functionality by Garden and Plant Name.

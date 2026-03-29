@@ -5,7 +5,7 @@ spring:
   application:
     name: plant-watering
   datasource:
-    url: jdbc:h2:file:./data/career_mode_db
+    url: jdbc:h2:file:./data/plant_watering_db
     driverClassName: org.h2.Driver
     username: sa
     password: ''
