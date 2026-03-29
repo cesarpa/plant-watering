@@ -93,6 +93,16 @@ Represents an individual botanical specimen.
 - **ORM**: Map relationships using standard annotations (JPA/Hibernate).
 - use the corresponding package structure for entities, repositories, services, and controllers.
 - use Thymeleaf for any necessary view rendering (if applicable).
+---
+
+## Technical Stack & Constraints (Strict)
+- **Language**: Java 21.
+- **Framework**: Spring Boot 3.x.
+- **Lombok**: Required. Use `@Data`, `@Builder`, `@NoArgsConstructor`, and `@AllArgsConstructor` to reduce boilerplate.
+- **Persistence**: Use **Jakarta Persistence (JPA)** instead of the old `javax.persistence` (Spring Boot 3+ standard).
+- **Validation**: Use `jakarta.validation.constraints` for fields like `name` (@NotBlank) and `wateringFrequency` (@Min(1)).
+- **Mapping**: Use standard JPA annotations for relationships (`@OneToMany`, `@ManyToOne`, `@JoinColumn`).
+- **Structure**: Follow a layered architecture with clear separation of concerns (Entities, Repositories, Services, Controllers).
 
 ## Thymeleaf Views (Optional)
 - **Garden List View**: Display all gardens and their associated plants.

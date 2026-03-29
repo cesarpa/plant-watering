@@ -3,6 +3,8 @@ package com.cesarpa.plant_watering.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 public class Plant {
