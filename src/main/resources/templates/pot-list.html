@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pot List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Pot List</h1>
+        <a href="/pots/new" class="btn btn-primary mb-3">Add New Pot</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Material</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pot : ${pots}">
+                    <td th:text="${pot.id}"></td>
+                    <td th:text="${pot.name}"></td>
+                    <td th:text="${pot.material}"></td>
+                    <td th:text="${pot.size}"></td>
+                    <td>
+                        <a href="/pots/{id}/edit" th:href="@{/pots/{id}(id=${pot.id})}" class="btn btn-warning">Edit</a>
+                        <form action="/pots/{id}/delete" th:action="@{/pots/{id}(id=${pot.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${message}">
+            <div class="alert alert-success mt-3" role="alert">
+                <span th:text="${message}"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
